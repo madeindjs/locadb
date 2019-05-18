@@ -13,11 +13,7 @@ export class Routes {
         })
 
         app.route('/products')
-        .get((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'TODO: Get products'
-            })
-        })
+        .get(this.productsController.getProducts)
         .post(this.productsController.createProduct);
 
         app.route('/products/:id')

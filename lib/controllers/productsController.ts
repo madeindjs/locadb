@@ -18,5 +18,12 @@ export class ProductsController{
         })
     }
 
-
+    public getProducts (req: Request, res: Response) {           
+        models.Product.find({}, (err, products) => {
+            if(err){
+                res.send(err);
+            }
+            res.json(products);
+        });
+    }
 }
