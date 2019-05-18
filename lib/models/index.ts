@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import Product from './product';
+import Product from './productModel';
 
 const connectDb = () => {
   return mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
