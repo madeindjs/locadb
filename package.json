@@ -1,0 +1,21 @@
+{
+  "name": "locadb",
+  "version": "1.0.0",
+  "description": "Locadex API using Typescript and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./lib/server.ts",        
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.0",
+    "mongoose": "^5.5.9",
+    "nodemon": "^1.19.0"
+  }
+}
