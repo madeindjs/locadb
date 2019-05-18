@@ -13,24 +13,12 @@ export class Routes {
         })
 
         app.route('/products')
-        .get(this.productsController.getProducts)
-        .post(this.productsController.createProduct);
+        .get(this.productsController.index)
+        .post(this.productsController.create);
 
         app.route('/products/:id')
-        .get((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'TODO: Get product'
-            })
-        })
-        .put((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'TODO: Update products'
-            })
-        })
-        .delete((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'TODO: Destroy products'
-            })
-        })
+        .get(this.productsController.show)
+        .put(this.productsController.update)
+        .delete(this.productsController.delete)
     }
 }

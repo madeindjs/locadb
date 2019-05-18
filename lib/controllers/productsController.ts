@@ -3,27 +3,55 @@ import * as mongoose from 'mongoose';
 import models from '../models';
 import { Request, Response } from 'express';
 
+const Product = models.Product;
+
 
 export class ProductsController{
 
-    public createProduct (req: Request, res: Response) {
-        let newProduct = new models.Product(req.body);
+    public create (req: Request, res: Response) {
+        let newProduct = new Product(req.body);
         
         newProduct.save((err: Error, productSaved) => {
             if (err) {
                 res.send(err)
-            }else{
-                res.json(productSaved)
             }
+            res.json(productSaved)
         })
     }
 
-    public getProducts (req: Request, res: Response) {           
-        models.Product.find({}, (err, products) => {
+    public index (req: Request, res: Response) {           
+        Product.find({}, (err, products) => {
             if(err){
                 res.send(err);
             }
             res.json(products);
+        });
+    }
+
+    public show (req: Request, res: Response) {           
+        Product.findById(req.params.id, (err, products) => {
+            if(err){
+                res.send(err);
+            }
+            res.json(products);
+        });
+    }
+
+    public update (req: Request, res: Response) {           
+        Product.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, product) => {
+            if(err){
+                res.send(err);
+            }
+            res.json(product);
+        });
+    }
+
+    public delete (req: Request, res: Response) {           
+        Product.remove({ _id: req.params.id }, (err, product) => {
+            if(err){
+                res.send(err);
+            }
+            res.json({ message: 'Successfully deleted product!'});
         });
     }
 }
