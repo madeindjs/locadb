@@ -1,9 +1,8 @@
 import * as mongoose from 'mongoose';
 
-import models from '../models';
+import Product from '../models/productModel';
 import { Request, Response } from 'express';
 
-const Product = models.Product;
 
 
 export class ProductsController{
