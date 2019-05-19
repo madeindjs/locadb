@@ -1,4 +1,4 @@
-import {Request, Response} from "express";
+import { Request, Response } from "express";
 import { ProductsController } from "../controllers/productsController";
 import { UsersController } from "../controllers/usersController";
 

@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import Product from './product.interface';
 
 const Schema = mongoose.Schema;
 
@@ -13,6 +14,6 @@ const ProductSchema = new Schema({
     }
 })
 
-const Product = mongoose.model('Product', ProductSchema);
+const Product = mongoose.model<Product & mongoose.Document>('Product', ProductSchema);
 
 export default Product;
