@@ -1,15 +1,18 @@
 import * as mongoose from 'mongoose';
+import * as bcrypt from 'bcrypt';
+import { Hash } from 'crypto';
 
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     email: {
         type: String,
-        required: 'An user must have be an email',
+        unique: true,
+        required: true,
     },
     password: {
         type: String,
-        required: 'An user must have be a password',
+        required: true,
     },
     created_at: {
         type: Date,
@@ -23,6 +26,17 @@ const UserSchema = new Schema({
 //       : "I don't have a name";
 //     console.log(greeting);
 //   }
+
+UserSchema.pre('save', function (next) {
+    let user = this;
+    bcrypt.hash(user.password, 10, function (err: Error, hash: Hash){
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    })
+});
 
 const Product = mongoose.model('User', UserSchema);
 
