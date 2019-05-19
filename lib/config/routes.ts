@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { ProductsController } from "../controllers/productsController";
-import { UsersController } from "../controllers/usersController";
+import { ProductsController } from "../controllers/products.controller";
+import { UsersController } from "../controllers/users.controller";
 
 export class Routes {
     public productsController: ProductsController = new ProductsController();
