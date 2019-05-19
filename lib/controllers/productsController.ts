@@ -1,6 +1,4 @@
-import * as mongoose from 'mongoose';
-
-import Product from '../models/productModel';
+import Product from '../models/product';
 import { Request, Response } from 'express';
 
 
@@ -18,8 +16,8 @@ export class ProductsController{
         })
     }
 
-    public index (req: Request, res: Response) {           
-        Product.find({}, (err, products) => {
+    public index (req: Request, res: Response) {
+        Product.find({}, (err: Error, products) => {
             if(err){
                 res.send(err);
             }
@@ -27,8 +25,8 @@ export class ProductsController{
         });
     }
 
-    public show (req: Request, res: Response) {           
-        Product.findById(req.params.id, (err, products) => {
+    public show (req: Request, res: Response) {
+        Product.findById(req.params.id, (err: Error, products) => {
             if(err){
                 res.send(err);
             }
@@ -36,7 +34,7 @@ export class ProductsController{
         });
     }
 
-    public update (req: Request, res: Response) {           
+    public update (req: Request, res: Response) {
         Product.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, product) => {
             if(err){
                 res.send(err);
@@ -45,8 +43,8 @@ export class ProductsController{
         });
     }
 
-    public delete (req: Request, res: Response) {           
-        Product.remove({ _id: req.params.id }, (err, product) => {
+    public delete (req: Request, res: Response) {
+        Product.remove({ _id: req.params.id }, (err: Error, product) => {
             if(err){
                 res.send(err);
             }

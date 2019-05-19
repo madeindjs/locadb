@@ -6,19 +6,19 @@ export class Routes {
 
     public routes(app): void {
         app.route('/')
-        .get((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'GET request successfulll!!!!'
-            })
-        })
+           .get((req: Request, res: Response) => {
+               res.status(200).send({
+                   message: 'Welcom to Locadex'
+               })
+           })
 
         app.route('/products')
-        .get(this.productsController.index)
-        .post(this.productsController.create);
+           .get(this.productsController.index)
+           .post(this.productsController.create);
 
         app.route('/products/:id')
-        .get(this.productsController.show)
-        .put(this.productsController.update)
-        .delete(this.productsController.delete)
+           .get(this.productsController.show)
+           .put(this.productsController.update)
+           .delete(this.productsController.delete)
     }
 }

@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
 
-import Product from './productModel';
+import Product from './product';
 
 export default { Product };
